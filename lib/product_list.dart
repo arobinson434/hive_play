@@ -19,13 +19,15 @@ class ProductList extends StatelessWidget {
           ListView.builder(
         itemCount: products.length,
         itemBuilder: (BuildContext context, int index) {
-          final product = Product.fromJson(products[index].toJson());
+          //final product = Product.fromJson(products[index].toJson()); // Why?
+          final product = products[index];
 
-          final matchingProduct = box.values.where((Product existingProduct) {
-            return existingProduct.id == product.id;
-          }).firstOrNull;
+          //final matchingProduct = box.values.where((Product existingProduct) { // Also why?
+          //  return existingProduct.id == product.id;
+          //}).firstOrNull;
 
-          final isReceived = matchingProduct != null;
+          //final isReceived = matchingProduct != null;
+          final isReceived = box.values.contains(product);
 
           return Card(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -64,39 +66,4 @@ class ProductList extends StatelessWidget {
       ),
     );
   }
-
-  //@override
-  //Widget build(BuildContext context) {
-  //  return ListView.builder(
-  //    itemCount: products.length,
-  //    itemBuilder: (BuildContext context, int index) => Card(
-  //      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-  //      child: Padding(
-  //        padding: const EdgeInsets.all(10),
-  //        child: Column(
-  //          crossAxisAlignment: CrossAxisAlignment.start,
-  //          children: [
-  //            Row(
-  //              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //              children: [
-  //                Text(
-  //                  products[index].title,
-  //                  style: Theme.of(context).textTheme.titleMedium,
-  //                ),
-  //                Text(products[index].category.name),
-  //              ],
-  //            ),
-  //            Row(
-  //              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //              children: [
-  //                Text('(${products[index].stock}) \$${products[index].price.toString()}'),
-  //                TextButton(onPressed: () {}, child: const Text('Add')),
-  //              ],
-  //            ),
-  //          ],
-  //        ),
-  //      ), // Padding
-  //    ),
-  //  );
-  //}
 }
