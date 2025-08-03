@@ -19,15 +19,13 @@ class ProductList extends StatelessWidget {
           ListView.builder(
         itemCount: products.length,
         itemBuilder: (BuildContext context, int index) {
-          //final product = Product.fromJson(products[index].toJson()); // Why?
           final product = products[index];
 
-          //final matchingProduct = box.values.where((Product existingProduct) { // Also why?
-          //  return existingProduct.id == product.id;
-          //}).firstOrNull;
+          final matchingProduct = box.values.where((Product existingProduct) {
+            return existingProduct.id == product.id;
+          }).firstOrNull;
 
-          //final isReceived = matchingProduct != null;
-          final isReceived = box.values.contains(product);
+          final isReceived = matchingProduct != null;
 
           return Card(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

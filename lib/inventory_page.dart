@@ -33,14 +33,15 @@ class InventoryPage extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 product.stock++;
-                                box.put(index, product); // This is only needed to trigger the listenable
+                                product.save(); // This is only needed to trigger the listenable
                               },
                               icon: const Icon(Icons.add)
                             ),
                             IconButton(
                               onPressed: () {
                                 product.stock--;
-                                box.put(index, product); // Same as above, just for the listenable
+                                product.save(); // Same as above, just for the listenable
+                                //box.put(index, product); // Alternative to save()
                               },
                               icon: const Icon(Icons.remove)
                             ),
